@@ -1,0 +1,13 @@
+﻿@charset "utf-8";
+
+@import "../fonts/proximanova/stylesheet.css";
+
+$font-name: "";
+
+@mixin font($weight: "") {
+	font-family: '#{$font-name}#{$weight}', Arial;
+}
+
+@mixin fontw($weight) {
+	font-weight: $weight;
+}

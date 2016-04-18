@@ -1,0 +1,33 @@
+{
+  "name": "celebration",
+  "version": "1.0.0",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "browser-sync": "^2.11.1",
+    "combined-stream": "^1.0.5",
+    "gulp-clean": "^0.3.1",
+    "gulp-google-cdn": "^2.1.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "gulp.spritesmith": "^6.2.0",
+    "rimraf": "^2.5.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heads-and-Hands/orthaus-web.git"
+  },
+  "author": "ivashev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Heads-and-Hands/orthaus-web/issues"
+  },
+  "homepage": "https://github.com/Heads-and-Hands/orthaus-web#readme"
+}

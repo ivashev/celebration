@@ -1,0 +1,194 @@
+﻿@charset "utf-8";
+
+@mixin box-sizing($box-sizing) {
+	-webkit-box-sizing: $box-sizing;
+	-moz-box-sizing: $box-sizing;
+	box-sizing: $box-sizing;
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+
+@mixin font-smooth() {
+	-webkit-font-smoothing: antialiased !important;
+	//-webkit-backface-visibility: hidden;
+	//-moz-backface-visibility:    hidden;
+	//-ms-backface-visibility:     hidden;
+}
+
+@mixin box-shadow($shadow) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow:    $shadow;
+	box-shadow:         $shadow;
+}
+
+@mixin user-select-none() {
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    -o-user-select: none;
+    user-select: none;        
+}
+
+@mixin display-flex() {
+    display: -ms-flexbox;
+	display: -webkit-flex; 
+	display: -moz-flex; 
+	display: -ms-flex; 
+	display: flex; 
+}
+
+@mixin flex-shrink($value) {
+    flex-shrink: $value;
+    -webkit-flex-shrink: $value;
+    -moz-flex-shrink: $value;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin align-items($value) {
+    -webkit-align-items: $value;
+    -moz-align-items: $value;
+    -ms-align-items: $value;
+    -ms-flex-align: $value;
+    align-items: $value;
+}
+
+@mixin justify-content($value) {
+    -webkit-justify-content: $value;
+    -moz-justify-content: $value;
+    -ms-justify-content: $value;
+    -ms-flex-pack: $value;
+    justify-content: $value;
+}
+
+@mixin flex-direction($value) {
+    -webkit-flex-direction: $value;
+    -moz-flex-direction: $value;
+    -ms-flex-direction: $value;
+    flex-direction: $value;
+}
+
+@mixin prefix($name, $argument) {
+	-webkit-#{$name}: #{$argument};
+	-moz-#{$name}: #{$argument};
+	-ms-#{$name}: #{$argument};
+	#{$name}: #{$argument};
+}
+
+@mixin vertical-align-block() {
+    width: 100%;
+    height: 100%;
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-direction(column);
+}
+
+@mixin vertical-align-block-old-fixed-height() {
+	display: table;
+	width: 100%;
+
+	& > *:first-child {
+		display: table-cell;
+		width: 100%;
+		height: 100%;
+		vertical-align: middle;
+		text-align: center;
+	}
+}
+
+@mixin user-select-none() {
+    &, * {
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+	}
+}
+
+@mixin clearfix() {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+@mixin img-wrapper {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	img {
+		display: none;
+	}
+}
+
+@mixin img-background-wrapper() {
+	position: relative;
+	overflow: hidden;
+
+	.background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		@include img-wrapper();
+		z-index: 2 !important;
+	}
+
+	* {
+		position: relative;
+		z-index: 4;
+	}
+}
+
+@mixin tick-control() {
+	margin: 5px 0px;
+
+	input {
+		display: none;
+	}
+
+	.tick-wrapper {
+		display: block;
+		position: relative;
+		padding: 0;
+		min-height: 0;
+
+		.icon-tick {
+			position: absolute;
+			display: none;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	input:checked + .tick-wrapper {
+		.icon-tick {
+			display: block;
+		}
+	}
+}
+
+@mixin form-control() {
+	display: inline-block;
+	width: 100%;
+	height: $form-control-height;
+	position: relative;
+	line-height: $form-control-height - 2px;
+	font-size: $form-control-font-size;
+}

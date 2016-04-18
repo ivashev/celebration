@@ -1,0 +1,61 @@
+﻿@charset "utf-8";
+
+@import "_reset";
+@import "_fonts";
+@import "_mixins";
+@import "_custom";
+
+
+.modal {
+	.modal-dialog {
+		width: 90%;
+
+		.modal-content {
+			width: 100%;
+			border-radius: 0px;
+            @include font(book);
+
+			.modal-header {
+				//padding: 20px;
+				//background: $theme-darkblue;
+				//color: white;
+				position: relative;
+				//padding: 0;
+				border: none;
+				
+				.close {
+					opacity: 1 !important;
+					text-shadow: none;
+                    padding: 5px;
+                    margin-top: -7px;
+                    margin-right: -5px;
+
+					span {
+						font-size: 30px;
+						font-weight: lighter;
+					}
+				}
+			}
+
+			.modal-body {
+				//padding: 20px;
+				//padding: 0;
+			}
+
+			.modal-footer {
+				//padding: 20px;
+				//padding: 0;
+				text-align: left;
+			}
+		}
+	}
+
+	&.modal-callback {
+		.modal-dialog {
+			max-width: 300px;
+
+			.modal-content {
+			}
+		}
+	}
+}
