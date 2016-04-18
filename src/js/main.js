@@ -5,7 +5,8 @@
 	k = 0,
 	imageFadeLength = 500,
 	imageTimeMultiplier = 30,
-	minTimeSeconds = 5;
+	minTimeSeconds = 5,
+	minTimeStart = 10000;
 
 for(var i = 0; i < imagesCount; i++) {
 	if(k + 1 == actualCount)
@@ -39,7 +40,7 @@ for(var i = 0; i < imagesCount; i++) {
             this.$img = this.$wrapper.find("img");
             this.options = $.extend(this.defaults, settings);
             //this.random = Math.floor(Math.random() * (1 - minTimeSeconds/10 + 1) + minTimeSeconds/10);
-            this.random = Math.random();
+            //this.random = Math.random();
             this.init();
         }
 
@@ -57,7 +58,7 @@ for(var i = 0; i < imagesCount; i++) {
     	setTimeout(function() {
         	that.setImage();
         	that.switch();
-        }, this.random * 10 * 1000 * imageTimeMultiplier);
+        }, Math.random() * 10 * 1000 * imageTimeMultiplier + minTimeStart);
     }
 
     ImageDiv.prototype.pickImageUrl = function() {
@@ -66,10 +67,16 @@ for(var i = 0; i < imagesCount; i++) {
 
     ImageDiv.prototype.setImage = function() {
     	var imageUrl = this.pickImageUrl(),
-    		$img = this.$img;
+    		$img = this.$img,
+    		$newImg = $("<img/>")
+    	$newImg.attr("src", imageUrl);
+    	$newImg.css("display", "none");
+    	$img.after($newImg);
     	$img.fadeOut(imageFadeLength);
-    	$img.attr("src", imageUrl);
-    	$img.fadeIn(imageFadeLength);
+    	$newImg.fadeIn(imageFadeLength, function() {
+    		$img.remove();
+    	});
+    	this.$img = $newImg;
     }
 
     $.fn.imageDiv = function () {
